@@ -45,6 +45,17 @@ export default defineConfig({
 - `mode` (optional, default: 'log'): Specifies the mode of operation. Use `'copy'` to copy source files and `'log'` to log file paths only.
 - `logType` (optional, default: 'md'): Specifies the type of log file to generate. Use `'md'`, `'csv'`, or `'json'`.
 
+```typescript
+
+type VitePluginResourceCollectorOptions = {
+    outputDir?: string;
+    baseDir?: string;
+    mode?: "copy" | "log";
+    logType?: "md" | "csv" | "json";
+};
+
+```
+
 ## Example
 
 Suppose you have a Vite project with the following directory structure:
@@ -58,30 +69,37 @@ my-vite-project/
 └── vite.config.js
 ```
 
-After configuring and running Vite with this plugin, the plugin will collect transpiled source files into the specified `outputDir` directory.
+After configuring and running Vite with the `vite-plugin-resource-collector` plugin, the plugin will collect transpiled source files into the specified `outputDir` directory (`build/raw-sources` by default).
+
+### Output During Build
 
 When building the project, the plugin will log the following output:
 
 ```
-9:47:59 PM [manabie][vite-plugin-source-collector] Collecting source files to /Users/vctqs1/Documents/developer/manabie/school-portal-admin/src/squads/payment/build/payment-sf-raw
+9:47:59 PM [manabie][vite-plugin-resource-collector] Collecting source files to /path/to/your/project/build/raw-sources
 
 ...
 ...
 
-9:48:24 PM [manabie][vite-plugin-source-collector] Collected source files to /Users/vctqs1/Documents/developer/manabie/school-portal-admin/src/squads/payment/build/payment-sf-raw/README.md
+9:48:24 PM [manabie][vite-plugin-resource-collector] Collected source files to /path/to/your/project/build/raw-sources/README.md
 ```
 
-README.md:
+### Contents of README.md
+
+The generated `README.md` will contain a structured list of collected source files:
 
 ```markdown
 ### Vite Plugin Source Collector
 
 | # | File Name | Size (KB) |
 | --- | --- | --- |
-| 1 | /Users/vctqs1/Documents/developer/manabie/school-portal-admin/src/squads/payment/exports/applications/payment-sf.tsx | 11.10 |
-| 2 | /Users/vctqs1/Documents/developer/manabie/school-portal-admin/src/only-for-temporary/polyfill.js | 0.37 |
-
+| 1 | /path/to/your/project/src/main.ts | 5.80 |
+| 2 | /path/to/your/project/src/components/Button.ts | 3.40 |
 ```
+
+This table lists each source file's path relative to the project root and its size in kilobytes (KB).
+
+
 
 ## License
 
