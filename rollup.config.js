@@ -1,9 +1,10 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
+import terser from '@rollup/plugin-terser';
 
 export default {
-    input: 'src/index.ts', // Adjust path as per your project structure
+    input: 'src/index.ts',
     output: [
         {
             file: 'dist/index.cjs', // CommonJS output
@@ -15,6 +16,7 @@ export default {
         },
     ],
     plugins: [
+        terser(), // minify output
         nodeResolve(), // resolve node_modules
         commonjs(), // convert CommonJS modules to ES
         typescript(), // handle TypeScript files
