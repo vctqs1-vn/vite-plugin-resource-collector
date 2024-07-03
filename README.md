@@ -76,12 +76,12 @@ After configuring and running Vite with the `vite-plugin-resource-collector` plu
 When building the project, the plugin will log the following output:
 
 ```
-9:47:59 PM [manabie][vite-plugin-resource-collector] Collecting source files to /path/to/your/project/build/raw-sources
+9:47:59 PM [vite-plugin-resource-collector] Collecting source files to /path/to/your/project/build/raw-sources
 
 ...
 ...
 
-9:48:24 PM [manabie][vite-plugin-resource-collector] Collected source files to /path/to/your/project/build/raw-sources/README.md
+9:48:24 PM [vite-plugin-resource-collector] Collected source files to /path/to/your/project/build/raw-sources/README.md
 ```
 
 ### Contents of README.md
